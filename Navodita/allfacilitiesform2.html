@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Your CSS styles here... */
+        * {
+            font-family: 'Marcellus';
+        }
+        #backgroundimage {
+            background-image: url('allfacilities\ images/beach.jpeg'); 
+            background-size: cover;
+            background-position: center;
+        }
+        #textbackground {
+            background-color: aliceblue;
+            height: 30px;
+            padding: 10px;
+            margin-left: 20%;
+            font-weight: 300px;
+            text-align: center;
+            color: #a88565;
+            width: 60%;
+        } 
+        #formsbackground {
+            background-color: whitesmoke;
+            padding: 30px;
+            width: 57%;
+            margin-left: 20%;
+            height: auto;
+        }
+
+        /* Custom Dropdown Box */
+        .custom-dropdown {
+            position: relative;
+            display: inline-block;
+            
+        }
+
+        .custom-dropdown select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-color: #fff;
+            border: 2px solid #a88565;
+            padding: 10px;
+            font-size: 16px;
+            font-family: 'Marcellus', sans-serif;
+            width: 100%;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .custom-dropdown::after {
+            content: '\25BC';
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        /* Additional styles for input fields */
+        input[type="text"],
+        input[type="email"],
+        input[type="number"] {
+            border: 2px solid #a88565;
+            padding: 10px;
+            font-size: 16px;
+            font-family: 'Marcellus', sans-serif;
+            width: 100%;
+            outline: none;
+        }
+
+        /* Submit Button */
+        .book {
+            padding: 10px 20px;
+            border: 3px solid #80714c;
+            border-radius: 360px;
+            background-color: #a88565;
+            color: white;
+            cursor: pointer;
+        }
+
+        .book:hover {
+            background-color: white;
+            color: #a88565;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Poppins&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarnt Suites | See & Do Form</title>
+    
+    <link rel="icon" href="../JingEn/images/logo" type="image">
+</head>
+<body id="backgroundimage">
+    <div>
+        <h2 id="textbackground">Make a reservation!</h2>
+        <form id="formsbackground" onsubmit="return submitForm()">
+            <label for="fname">Full Name:</label><br>
+            <input type="text" id="fname" name="fname" size="60" required><br><br>
+            
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" placeholder="example@gmail.com" required><br><br>
+
+            <label for="facilities">Facility to book:</label><br>
+            <div class="custom-dropdown">
+                <select name="facilities" id="facilities" required onchange="showAdditionalFields()">
+                    <option value="" disabled selected>Choose a facility</option>
+                    <option value="Spa">Spa</option>
+                    <option value="Seaside Swimmingpool">Seaside Swimmingpool</option>
+                    <option value="Volleyball Beach Court">Volleyball Beach Court</option>
+                    <option value="Garden">Garden</option>
+                </select>
+            </div><br><br>
+
+            <div id="additionalFields" style="display: none;">
+                <label for="spaType">Type of spa therapy to book:</label><br>
+                <div class="custom-dropdown">
+                    <select name="spaType" id="spaType" required>
+                        <option value="" disabled selected>Choose a spa therapy</option>
+                        <option value="Soft Candlelight">Soft Candlelight</option>
+                        <option value="Saltzen Healing">Saltzen Healing</option>
+                        <option value="Waves of Harmony">Waves of Harmony</option>
+                        <option value="Lavashell Therapy">Lavashell Therapy</option>
+                    </select>
+                </div><br><br>
+
+                <label for="pax">Number of pax:</label><br>
+                <input type="number" id="pax" name="pax" min="1" required><br><br>
+            </div>
+            
+            <label for="datemin">Choose a date:</label><br>
+            <input type="date" id="datemin" name="datemin" min="2023-01-01" max="2024-12-31" required><br><br>
+            
+            <label for="timeslot">Time slot (lunch break is from 2pm to 4pm):</label><br>
+            <div class="custom-dropdown">
+                <select name="timeslot" id="timeslot" required>
+                    <option value="" disabled selected>Choose a timeslot</option>
+                    <option value="9am to 10am">9am to 10am</option>
+                    <option value="10am to 11am">10am to 11am</option>
+                    <option value="11am to 12pm">11am to 12pm</option>
+                    <option value="12pm to 1pm">12pm to 1pm</option>
+                    <option value="1pm to 2pm">1pm to 2pm</option>
+                    <option value="4pm to 5pm">4pm to 5pm</option>
+                    <option value="5pm to 6pm">5pm to 6pm</option>
+                    <option value="6pm to 7pm">6pm to 7pm</option>
+                </select>
+            </div><br><br>
+
+            <input type="submit" value="Submit" class="book">
+        </form> 
+    </div>
+
+    <script>
+        function showAdditionalFields() {
+            const facility = document.getElementById("facilities").value;
+            const additionalFields = document.getElementById("additionalFields");
+
+            if (facility === "Spa") {
+                additionalFields.style.display = "block";
+            } else {
+                additionalFields.style.display = "none";
+            }
+        }
+
+        function submitForm() {
+            const fname = document.getElementById("fname").value;
+            const email = document.getElementById("email").value;
+            const facility = document.getElementById("facilities").value;
+            const spaType = document.getElementById("spaType")?.value;
+            const pax = document.getElementById("pax")?.value;
+            const date = document.getElementById("datemin").value;
+            const timeslot = document.getElementById("timeslot").value;
+
+            if (!fname || !email || !facility || (facility === "Spa" && (!spaType || !pax)) || !date || !timeslot) {
+                alert("Please fill in all required fields");
+                return false;
+            }
+
+            // Replace the following alert with your desired summary display
+            alert(`Summary:\nFull Name: ${fname}\nEmail: ${email}\nFacility: ${facility}\nSpa Type: ${spaType || "N/A"}\nPax: ${pax || "N/A"}\nDate: ${date}\nTimeslot: ${timeslot}`);
+            return true;
+        }
+    </script>
+</body>
+</html>

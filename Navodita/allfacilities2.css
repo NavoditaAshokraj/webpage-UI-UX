@@ -1,0 +1,742 @@
+* {font-family: 'Marcellus';
+    margin: 0px;
+}
+a {
+  font-family:'Poppins';
+}
+
+
+/* navigation bar */
+.navigationbar{
+  border:1px solid #255E65;
+  background-color: #255e65;
+  padding-top:15px;
+  height:60px;
+  top:0px;
+  position:fixed;
+  width:100%;
+  z-index: 100;
+
+  animation-name: slide;
+  animation-duration:1s;
+}
+
+@keyframes slide {
+  from {transform:translatey(-120px);}
+  to {transform:translatey(0px);}
+}
+
+@keyframes slideup {
+  from {transform:translatey(0px);}
+  to {transform:translatey(-120px);}
+}
+
+.navigationbar ul li{
+  display:inline;
+  position: relative;
+  padding-left:50px;
+}
+
+.navigationbar ul li a{
+  color:white;
+  text-decoration:none;
+  text-align:right;
+  font-weight:300;
+  display:inline-block;
+  padding-top: 15px;
+}
+
+.navigationbar ul li a::after{
+  display:block;
+  content:"";
+  width:100%;
+  height:2px;
+  background-color:rgb(255, 255, 255);
+  transform: scalex(0);
+  transition: 0.6s;
+}
+
+.navigationbar ul li a:hover::after{
+  transform:scalex(1)
+}
+
+#reserve {
+  background-color:#3591A0;
+  padding:15px;
+  color:rgb(249, 246, 240);
+  text-decoration:none;
+  float:right;
+  margin-right:40px;
+} 
+/* mobile navigation bar */
+.mobile {
+  position:fixed;
+  background-color:#308d99;
+  height:100%;
+  width:40%;
+  opacity:0;
+  z-index:1000;
+  display:none;
+  margin-top:0px;
+
+  
+  animation-name:left_slide;
+  animation-duration:0.8s;
+}
+.mobile ul li a{
+  color:white;
+  text-decoration:none;
+  text-align:right;
+  font-weight:300;
+  display:inline-block;
+  position:relative;
+  padding-top: 15px;
+}
+.mobile ul {
+  list-style:none;
+  margin-top:20%;
+}
+.mobile ul li{
+  position: relative;
+  margin-left:20%;
+  margin-top:5%;
+}
+@keyframes left_slide {
+  from {transform:translatex(-400px)};
+  to {transform:translatex(0px)};
+}
+.icon {
+  position:absolute;
+  float:right;
+  right:7%;
+  color:white;
+}
+#icon {
+  display:none;
+  font-size:28px;
+}
+#close {
+  font-size:30px;
+  background-color:#308d99;
+  border:none;
+  color:white;
+}
+@media screen and (max-width: 1000px) {
+  .navigationbar {
+      width:100%;
+  }
+  .mobile {
+      opacity:1;
+      width:30%;
+      bottom:1px;
+  }
+  .navigationbar ul li a{
+      position:absolute;
+      display:none;
+  }
+  #icon {
+      display:block;
+      margin-top:15px;
+  }
+  #reserve {
+      float:left;
+      position:relative;
+      right:5%;
+      bottom:25px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .mobile {
+    width:40%;
+  }
+}
+
+  /*background image*/
+.facilities {
+    background-image: url('allfacilities\ images/backgroundfinal2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: 60px;
+    height: 325px;
+}
+#navigationbar {
+  font-family: 'Poppins';
+}
+.facilitiesbox {
+  position: relative;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  padding:15px;
+  background-color: rgba(0, 0, 0, 0.584);
+  text-shadow: -2px 2px 6px rgb(0, 0, 0);
+  text-align: center;
+  color: white;
+  text-decoration: none;
+}
+/*featured*/
+.featuredtext {
+    font-size: 35px;
+    font-weight: 10px;
+    margin-top: 10%;
+}
+.horizontalline {
+    width: 40px;
+    height: 1px;
+    margin-top: 0.5%;
+    background-color: #80714c;
+}
+.subtext {
+    font-weight: 400;
+    font-size: 25px;
+    margin-top: 2.25%;
+    margin-bottom: 2%;
+}
+
+/*photo card slider*/
+.slider-container {
+  display: flex;
+  justify-content: center;
+  display: grid;
+  grid-auto-flow: column;
+  overflow: hidden;
+  width: 100%;
+}
+.slider-container i {
+  height: 50px;
+  width: 50px;
+  background: #3591A0;
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  font-size: 1.25rem;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.23);
+}
+.slider-container i:first-child {
+  left: 5px;
+  top: 165%;
+  transform: translateY(-50%);
+}
+.slider-container i:last-child {
+  right: 5px;
+  top: 165%;
+  transform: translateY(-50%);
+}
+.slider {
+  display: flex;
+  transition: transform 0.5s ease;
+  overflow: hidden;
+  padding-left: 0px;
+}
+.slider-container .slider {
+  scroll-behavior: smooth;
+}
+.slider.dragging {
+  scroll-behavior: auto;
+}
+.slider.dragging .photo-card-spa1,
+.slider.dragging .photo-card-spa2,
+.slider.dragging .photo-card-spa3,
+.slider.dragging .photo-card-spa4 {
+  cursor: grab;
+  user-select: none;
+}
+
+/* Second Slider */
+.slider-container2 {
+  display: flex;
+  justify-content: center;
+  display: grid;
+  grid-auto-flow: column;
+  overflow: hidden;
+  width: 100%;
+}
+
+.slider-container2 i {
+  /* Styles for the second slider arrows */
+  height: 50px;
+  width: 50px;
+  background: #3591A0;
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  font-size: 1.25rem;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.slider-container2 i:first-child {
+  left: 5px;
+  top: 330%;
+  transform: translateY(-50%);
+}
+
+.slider-container2 i:last-child {
+  right: 5px;
+  top: 330%;
+  transform: translateY(-50%);
+}
+
+.slider2 {
+  /* Styles for the second slider */
+  display: flex;
+  transition: transform 0.5s ease;
+  overflow: hidden;
+  padding-left: 0px;
+}
+
+.slider-container2 .slider2 {
+  scroll-behavior: smooth;
+}
+
+.slider2.dragging2 {
+  scroll-behavior: auto;
+}
+
+.slider2.dragging2 .photo-card-swimmingpool,
+.slider2.dragging2 .photo-card-indoorgames,
+.slider2.dragging2 .photo-card-volleyball,
+.slider2.dragging2 .photo-card-garden {
+  cursor: grab;
+  user-select: none;
+}
+
+/*photo cards*/
+.book {
+  font-family: 'Poppins';
+  margin-top: 9%;
+  margin-left: 73%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding: 10px 20px 10px 20px;
+  border: 3px solid #3591A0;
+  background-color:#3591A0;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  }
+.book:hover {
+  background-color: white;
+  color: #a88565;
+  border-color: a88565;
+  text-decoration: none;
+}
+.book2 {
+  margin-top: 11%;
+  margin-left: 73%;
+  margin-bottom: 2.5%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding: 10px 20px 10px 20px;
+  border: 3px solid #80714c;
+  border-radius: 360px;
+  background-color:#a88565;
+  color: white;
+  text-decoration: none;
+  }
+.book2:hover {
+  background-color: white;
+  color: #a88565;
+  text-decoration: none;
+}
+  .caption {
+    margin: 7%;
+    margin-bottom: 0%;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column; /* Added flex-direction: column */
+    justify-content: space-between;
+  }
+
+  .caption1 {
+    padding-top: 8px;
+    font-size: 19px;
+    font-weight: 370;
+    width: 100%;
+    height: 1%;
+  }
+  .caption2 {
+    padding-top: 20px;
+    font-size: 27px;
+    font-weight: 600;
+  }
+  .caption3 {
+    padding-top: 6%;
+    font-size: 23px;
+    font-weight: 400;
+    width: 387px;
+    height: 120px;
+  }
+  .caption35 {
+    padding-top: 6%;
+    font-size: 18px;
+    font-weight: 400;
+    width: 387px;
+    height: 150px;
+  }
+  #caption2 {
+    font-size: 23px;
+  }
+  #caption3 {
+    font-size: 20px;
+    width: 300px;
+    height: 140px;
+  }
+  #caption25 {
+    font-size: 23px;
+  }
+  #caption35 {
+    font-size: 20px;
+    height: 120px;
+    padding-top: 6%;
+    font-weight: 400;
+    width: 387px;
+
+  }
+.active {
+  opacity: 1; /* To make the active card visible */
+}
+/*spa1 photo card*/
+.photo-card-spa1 {
+    border: 1px solid #F5F5F5;
+    overflow: hidden;
+    background-color: #F5F5F5;
+    flex: 0 0 450px; /* Set the width of each photo-card */
+    margin-right: 20px;
+    max-height: 670px;
+  }
+  
+  .photo-card-spa1 img {
+    width: 100%;
+    height: 45%;
+    margin: 0px;
+  }
+  
+
+/*spa2 photo card*/
+.photo-card-spa2 {
+    max-height: 650px;
+    border: 1px solid #F5F5F5;
+    overflow: hidden;
+    background-color: #F5F5F5;
+    flex: 0 0 450px; /* Set the width of each photo-card */
+    margin-right: 20px;
+  }
+  
+  .photo-card-spa2 img {
+    width: 100%;
+    height: 45%;
+    margin: 0px;
+  }
+  /*spa3 photo card*/
+.photo-card-spa3 {
+    max-height: 650px;
+    border: 1px solid #F5F5F5;
+    overflow: hidden;
+    background-color: #F5F5F5;
+    flex: 0 0 450px; /* Set the width of each photo-card */
+    margin-right: 20px;
+  }
+  
+  .photo-card-spa3 img {
+    width: 100%;
+    height: 45%;
+    margin: 0px;
+  }
+   /*spa4 photo card*/
+.photo-card-spa4 {
+  max-height: 650px;
+  border: 1px solid #F5F5F5;
+  overflow: hidden;
+  background-color: #F5F5F5;
+  flex: 0 0 450px; /* Set the width of each photo-card */
+  margin-right: 20px;
+}
+
+.photo-card-spa4 img {
+  width: 100%;
+  height: 45%;
+  margin: 0px;
+}
+/*swimmingpool photo card*/
+.photo-card-swimmingpool {
+  border: 1px solid #F5F5F5;
+  overflow: hidden;
+  background-color: #F5F5F5;
+  flex: 0 0 450px; /* Set the width of each photo-card */
+  margin-right: 20px;
+  max-height: 650px;
+}
+
+.photo-card-swimmingpool img {
+  width: 100%;
+  height: 45%;
+  margin: 0px;
+}
+
+
+/*indoorgames photo carad*/
+.photo-card-indoorgames {
+  max-height: 650px;
+  border: 1px solid #F5F5F5;
+  overflow: hidden;
+  background-color: #F5F5F5;
+  flex: 0 0 450px; /* Set the width of each photo-card */
+  margin-right: 20px;
+}
+
+.photo-card-indoorgames img {
+  width: 100%;
+  height: 45%;
+  margin: 0px;
+}
+/*volleyball photo card*/
+.photo-card-volleyball {
+  max-height: 650px;
+  border: 1px solid #F5F5F5;
+  overflow: hidden;
+  background-color: #F5F5F5;
+  flex: 0 0 450px; /* Set the width of each photo-card */
+  margin-right: 20px;
+}
+
+.photo-card-volleyball img {
+  width: 100%;
+  height: 45%;
+  margin: 0px;
+}
+ /*Garden photo card*/
+.photo-card-garden {
+max-height: 650px;
+border: 1px solid #F5F5F5;
+overflow: hidden;
+background-color: #F5F5F5;
+flex: 0 0 450px; /* Set the width of each photo-card */
+margin-right: 20px;
+}
+
+.photo-card-garden img {
+width: 100%;
+height: 45%;
+margin: 0px;
+}
+ /*Wedding photo card*/
+.photo-card-wedding {
+  border: 1px solid #F5F5F5;
+  overflow: hidden;
+  background-color: #F5F5F5;
+  flex: 0 0 350px; /* Set the width of each photo-card */
+  margin-right: 37px;
+  margin-top: 20%;
+  max-height: 750px;
+  margin-bottom: 3%;
+}
+.photo-card-wedding img {
+  width: 100%;
+  height: 55%;
+  margin: 0px;
+}
+ /*Anniversary photo card*/
+.photo-card-anniversary {
+  border: 1px solid #F5F5F5;
+  overflow: hidden;
+  background-color: #F5F5F5;
+  flex: 0 0 350px; /* Set the width of each photo-card */
+  margin-right: 37px;
+  max-height: 710px;
+  margin-bottom: 3%;
+}
+
+.photo-card-anniversary img {
+  width: 100%;
+  height: 55%;
+  margin: 0px;
+}
+ /*Corporate events photo card*/
+.photo-card-corporate {
+  border: 1px solid #F5F5F5;
+  overflow: hidden;
+  background-color: #F5F5F5;
+  flex: 0 0 350px; /* Set the width of each photo-card */
+  margin-right: 37px;
+  margin-top: 20%;
+  margin-bottom: 3%;
+  min-height: 750px;
+}
+
+.photo-card-corporate img {
+  width: 100%;
+  height: 55%;
+  margin: 0px;
+}
+.events-container {
+  display: flex; 
+  width: 100%; 
+  margin-bottom: 10%;
+}
+/* FOOTER */
+
+
+footer h2 {
+  text-align:left;
+}
+footer {
+  background-color: rgb(37, 94, 101);
+  color: rgb(255, 255, 255);
+  text-align: left;
+  padding: 1%;
+}
+footer ul {
+  list-style:none;
+}
+
+footer h2 {
+  font-size: 150%;
+  letter-spacing: 3px;
+}
+
+footer div {
+  display: inline-block;
+  height: 130px;
+  padding-top: 2%;
+  padding-right: 2%;
+  margin-top: -10px;
+} 
+footer ul {
+  list-style:none;
+}
+@media screen and (max-width: 620px) {
+  footer {
+      text-align: center;
+      height:350px;
+  }
+
+  footer div {
+      font-size: 80%;
+      display: block;
+      height: 20%;
+  }
+}
+/*mobile navbar*/
+.mobile {
+    position:fixed;
+    background-color:#308d99;
+    height:100%;
+    width:40%;
+    z-index:1000;
+    display:none;
+
+    animation-name:left_slide;
+    animation-duration:0.8s;
+}
+.mobile ul li a{
+    color:white;
+    text-decoration:none;
+    text-align:right;
+    font-weight:300;
+    display:inline-block;
+    position:relative;
+    padding-top: 15px;
+}
+.mobile ul {
+    list-style:none;
+    margin-top:20%;
+}
+.mobile ul li{
+    position: relative;
+    margin-left:20%;
+    margin-top:5%;
+}
+@keyframes left_slide {
+    from {transform:translatex(-400px)};
+    to {transform:translatex(0px)};
+}
+.icon {
+    position:absolute;
+    float:right;
+    right:7%;
+    color:white;
+}
+#icon {
+    display:none;
+    font-size:28px;
+}
+#close {
+    font-size:30px;
+    background-color:#308d99;
+    border:none;
+    color:white;
+}
+@media screen and (max-width: 600px) {
+    .navigationbar ul li a{
+        position:absolute;
+        display:none;
+    }
+    #icon {
+        display:block;
+        margin-top:10px;
+    }
+    #reserve {
+        float:left;
+    }
+}
+
+/*responsive page*/
+@media screen and (max-width: 800px) {
+  .slider-container i:first-child {
+    left: 5px;
+    top: 153%;
+    transform: translateY(-50%);
+  }
+  .slider-container i:last-child {
+    right: 5px;
+    top: 153%;
+    transform: translateY(-50%);
+  }
+ 
+  .slider-container2 i:first-child {
+    left: 5px;
+    top: 310%;
+    transform: translateY(-50%);
+  }
+  
+  .slider-container2 i:last-child {
+    right: 5px;
+    top: 310%;
+    transform: translateY(-50%);
+  }
+  .photo-card-spa1,
+  .photo-card-spa2,
+  .photo-card-spa3,
+  .photo-card-spa4,
+  .photo-card-swimmingpool,
+  .photo-card-volleyball,
+  .photo-card-indoorgames,
+  .photo-card-garden
+  {
+    flex: 0 0 420px;;
+  }
+  .events-container {
+    display: contents;
+  }
+  .photo-card-anniversary {
+    max-height: none;
+  }
+  .photo-card-anniversary,.photo-card-corporate,.photo-card-wedding {
+    margin-right: 0px;
+    margin-top: 0%;
+    margin-bottom: 1%;
+    width: 100%;
+    min-height: 650px;
+  }
+}
